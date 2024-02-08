@@ -1,0 +1,14 @@
+.page, .wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+   /* A teljes ablak magasságáig igazítja a tartalmat */
+}
+
+.page img {
+  max-width: 30%; /* A kép maximális szélessége 100%-ra állítva, hogy arányosan szélességtartó legyen */
+}
+
+
+

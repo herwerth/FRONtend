@@ -1,0 +1,286 @@
+<div
+  class="bg-light-subtle bg-gradient d-flex flex-column justify-content-center align-items-center py-5 min-h-vh-100"
+>
+  <p class="text-center">Welcome to Tech Blog</p>
+  <h5 class="text-center">Create an account</h5>
+  <form
+    [formGroup]="registrationForm"
+    class="g-3 gx-1 text-center position-relative"
+  >
+    <div class="d-flex justify-content-start align-items-center">
+      <span class="d-flex justify-content-center align-items-center"
+        ><fa-icon
+          [icon]="faUserSecret"
+          [ngClass]="[
+            username?.errors && username?.value ? 'red' : '',
+            username?.valid ? 'green' : ''
+          ]"
+        ></fa-icon
+      ></span>
+      <div class="form-floating flex-grow-1">
+        <input
+          type="text"
+          class="form-control"
+          formControlName="username"
+          id="regUsername"
+          placeholder="Username"
+          (focus)="setInputToUntouched(username)"
+        />
+        <label for="regUsername">Username</label>
+      </div>
+    </div>
+    <div class="text-start p-left-48">
+      <small
+        *ngIf="username?.errors?.['minlength'] && username?.touched"
+        class="small text-danger"
+      >
+        Username must be at least 3 characters long.
+      </small>
+      <small
+        *ngIf="getUsernameServerError() as usernameServerError"
+        class="small text-danger"
+      >
+        {{ usernameServerError }}
+      </small>
+    </div>
+
+    <div class="d-flex justify-content-start align-items-center">
+      <span class="d-flex justify-content-center align-items-center"
+        ><fa-icon
+          [icon]="faEnvelope"
+          [ngClass]="[
+            email?.errors && email?.value ? 'red' : '',
+            email?.valid ? 'green' : ''
+          ]"
+        ></fa-icon
+      ></span>
+      <div class="form-floating flex-grow-1">
+        <input
+          type="email"
+          class="form-control"
+          formControlName="email"
+          id="regEmail"
+          placeholder="Email"
+          (focus)="setInputToUntouched(email)"
+        />
+        <label for="regEmail">Email</label>
+      </div>
+    </div>
+
+    <div class="text-start p-left-48">
+      <small
+        *ngIf="email?.invalid && email?.value && email?.touched"
+        class="small text-danger"
+      >
+        Invalid email address.
+      </small>
+      <small
+        *ngIf="getEmailServerError() as emailServerError"
+        class="small text-danger"
+      >
+        {{ emailServerError }}
+      </small>
+    </div>
+
+    <div class="d-flex justify-content-start align-items-center">
+      <span class="d-flex justify-content-center align-items-center"
+        ><fa-icon
+          [icon]="faIdCard"
+          [ngClass]="[
+            displayName?.errors && displayName?.value ? 'red' : '',
+            displayName?.valid ? 'green' : ''
+          ]"
+        ></fa-icon
+      ></span>
+      <div class="form-floating flex-grow-1">
+        <input
+          type="text"
+          class="form-control"
+          formControlName="displayName"
+          id="regDisplayName"
+          placeholder="Display name"
+          (focus)="setInputToUntouched(displayName)"
+        />
+        <label for="regDisplayName">Display name</label>
+      </div>
+    </div>
+    <div class="text-start p-left-48">
+      <small
+        *ngIf="displayName?.errors?.['minlength'] && displayName?.touched"
+        class="small text-danger"
+      >
+        Display name must be at least 3 characters long.
+      </small>
+      <small
+        *ngIf="getDisplayNameServerError() as dNameServerError"
+        class="small text-danger"
+      >
+        {{ dNameServerError }}
+      </small>
+    </div>
+
+    <div class="d-flex justify-content-start align-items-center">
+      <span class="d-flex justify-content-center align-items-center"
+        ><fa-icon
+          [icon]="faKey"
+          [ngClass]="[
+            password?.errors && password?.value ? 'red' : '',
+            password?.valid ? 'green' : ''
+          ]"
+        ></fa-icon
+      ></span>
+      <div class="form-floating flex-grow-1 position-relative">
+        <input
+          type="password"
+          class="form-control"
+          formControlName="password"
+          id="registrationPassword"
+          placeholder="Password"
+          (focus)="setInputToUntouched(password)"
+          (focus)="onPwFocus()"
+          (blur)="onPwBlur()"
+        />
+        <label for="registrationPassword">Password</label>
+      </div>
+    </div>
+
+    <div class="text-start p-left-48">
+      <small
+        *ngIf="getPwServerError() as pwServerError"
+        class="small text-danger"
+      >
+        {{ pwServerError }}
+      </small>
+    </div>
+
+    <div
+      *ngIf="isPwFocused"
+      class="text-start p-left-48 position-absolute start-0 bg-white z-3 w-100"
+      [ngClass]="[password?.valid ? 'fade-out' : 'fade-in']"
+    >
+      <small
+        [ngClass]="[password?.errors?.['spaceInPassword'] ? 'red' : 'green']"
+      >
+        <fa-icon
+          *ngIf="password?.errors?.['spaceInPassword']; else check"
+          [icon]="faCircleXmark"
+        ></fa-icon>
+        <ng-template #check
+          ><fa-icon [icon]="faCircleCheck"></fa-icon
+        ></ng-template>
+        Password cannot contain spaces. <br />
+      </small>
+
+      <small [ngClass]="[password?.errors?.['noNumberInPw'] ? 'red' : 'green']">
+        <fa-icon
+          *ngIf="password?.errors?.['noNumberInPw']; else check"
+          [icon]="faCircleXmark"
+        ></fa-icon>
+        <ng-template #check
+          ><fa-icon [icon]="faCircleCheck"></fa-icon
+        ></ng-template>
+        Must contain at least one number. <br />
+      </small>
+
+      <small
+        [ngClass]="[password?.errors?.['minlength'] || !password?.value ? 'red' : 'green']"
+      >
+        <fa-icon
+          *ngIf="password?.errors?.['minlength'] || !password?.value; else check"
+          [icon]="faCircleXmark"
+        ></fa-icon>
+        <ng-template #check
+          ><fa-icon [icon]="faCircleCheck"></fa-icon
+        ></ng-template>
+        Minimum length: 5 characters <br />
+      </small>
+
+      <small
+        [ngClass]="[password?.errors?.['noLowercaseInPw'] ? 'red' : 'green']"
+      >
+        <fa-icon
+          *ngIf="password?.errors?.['noLowercaseInPw']; else check"
+          [icon]="faCircleXmark"
+        ></fa-icon>
+        <ng-template #check
+          ><fa-icon [icon]="faCircleCheck"></fa-icon
+        ></ng-template>
+        Must contain at least one lowercase letter. <br />
+      </small>
+
+      <small
+        [ngClass]="[password?.errors?.['noUppercaseInPw'] ? 'red' : 'green']"
+      >
+        <fa-icon
+          *ngIf="password?.errors?.['noUppercaseInPw'] ; else check"
+          [icon]="faCircleXmark"
+        ></fa-icon>
+        <ng-template #check
+          ><fa-icon [icon]="faCircleCheck"></fa-icon
+        ></ng-template>
+        Must contain at least one uppercase letter. <br />
+      </small>
+    </div>
+
+    <div class="d-flex justify-content-start align-items-center">
+      <span class="d-flex justify-content-center align-items-center"
+        ><fa-icon
+          [icon]="faKey"
+          [ngClass]="[
+            confirmPassword?.errors && confirmPassword?.value ? 'red' : '',
+            confirmPassword?.valid ? 'green' : ''
+          ]"
+        ></fa-icon
+      ></span>
+
+      <fieldset
+        [disabled]="password?.invalid"
+        class="form-floating flex-grow-1"
+      >
+        <input
+          type="password"
+          class="form-control"
+          formControlName="confirmPassword"
+          id="confirmPassword"
+          placeholder="Confirm password"
+          (focus)="setInputToUntouched(confirmPassword)"
+        />
+        <label for="confirmPassword">Confirm password</label>
+      </fieldset>
+    </div>
+    <small
+      *ngIf="confirmPassword?.errors?.['passwordNotConfirmed'] && confirmPassword?.touched && confirmPassword?.value"
+      class="small text-danger"
+    >
+      Password does not match.
+    </small>
+
+    <div class="d-flex justify-content-start align-items-center">
+      <input
+        class="form-check-input p-2 checkbox"
+        type="checkbox"
+        formControlName="termsCheckbox"
+        id="terms-checkbox"
+      />
+      <label class="ps-2" for="terms-checkbox"
+        >By clicking this, you accept our Terms & Conditions.</label
+      >
+    </div>
+
+    <button
+      class="btn btn-primary"
+      type="click"
+      (click)="submitRegistration()"
+      [disabled]="!registrationForm.valid || formSent"
+    >
+      Continue
+    </button>
+  </form>
+  <button
+    class="btn btn-outline-primary mt-3"
+    type="click"
+    [routerLink]="['/sign-in']"
+  >
+    Already have an account? Sign in.
+  </button>
+</div>

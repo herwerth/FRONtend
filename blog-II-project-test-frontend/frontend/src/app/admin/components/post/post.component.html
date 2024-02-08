@@ -1,0 +1,30 @@
+<div class="full-background">
+  <div class="container">
+    <h1 class="text-center mb-4">New blog post</h1>
+    <form action="/new-post" method="post">
+      <div class="form-group">
+        <label for="title" class="font-weight-bold">Title:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          name="title"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="text" class="font-weight-bold">Text:</label>
+        <br />
+        <textarea
+          id="text"
+          name="text"
+          rows="10"
+          cols="50"
+          class="form-control"
+          required
+        ></textarea>
+      </div>
+      <button type="submit" class="btn btn-light mt-4">Submit</button>
+    </form>
+  </div>
+</div>

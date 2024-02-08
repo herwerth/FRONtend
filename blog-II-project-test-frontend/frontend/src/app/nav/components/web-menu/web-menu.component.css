@@ -1,0 +1,38 @@
+ul {
+  margin: 0;
+}
+
+.menu-block ul li {
+  height: 100%;
+  display: flex;
+}
+
+.height-5rem {
+  height: 5rem;
+}
+
+li a {
+  width: max-content;
+  height: 100%;
+  padding: 10px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu-block li a:hover {
+  cursor: pointer;
+  text-decoration: underline rgb(175, 145, 105) 5px;
+  text-underline-offset: 12px;
+  color: white;
+  background-color: rgb(89, 87, 87);
+}
+
+.icon {
+  color: rgb(89, 87, 87);
+}
+
+.icon:hover {
+  cursor: pointer;
+  color: white;
+}

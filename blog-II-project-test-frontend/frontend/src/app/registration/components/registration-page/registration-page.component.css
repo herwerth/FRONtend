@@ -1,0 +1,4 @@
+.bg-two-gradient {
+  background: rgb(255,250,85);
+  background: linear-gradient(45deg, rgba(255,250,85,1) 0%, rgba(25,251,214,1) 100%);
+}

@@ -1,0 +1,24 @@
+.navbar-container {
+  display: flex;
+  align-items: center;
+  width: 100vw;
+  height: 4rem;
+  border-bottom: 1px solid #808080;
+  position: sticky;
+}
+
+.navbar-logo {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  border-right: 1px solid grey;
+  height: 4rem;
+}
+
+.menu-toggle {
+  padding: 0 1.2rem;
+}
+
+.navbar-search {
+  padding: 1.2rem;
+}

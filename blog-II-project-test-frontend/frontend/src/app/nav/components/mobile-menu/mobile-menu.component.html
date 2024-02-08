@@ -1,0 +1,27 @@
+<div class="d-flex flex-column h-100">
+  <ul class="p-0 m-0 d-flex flex-column justify-content-between list-unstyled vertical-menu h-70 bg-darkgrey text-light menu-block">
+    <li><a class="menu-text">Home</a></li>
+    <li><a class="menu-text">Topic#1</a></li>
+    <li><a class="menu-text">Topic#2</a></li>
+    <li><a class="menu-text">Topic#3</a></li>
+    <li><a class="menu-text">Topic#4</a></li>
+    <li><a class="menu-text">Topic#5</a></li>
+  </ul>
+  <div class="h-30 d-flex flex-column">
+    <ul class="p-0 m-0 list-unstyled vertical-menu-dark login bg-dark-subtle">
+      <ng-container *ngIf="user$ | async as user">
+        <li *ngIf="!user"><a class="menu-text-dark hover-pointer" [routerLink]="['/sign-in']">Log in</a></li>
+        <li *ngIf="!user"><a class="menu-text-dark hover-pointer" [routerLink]="['/registration']">Sign up</a></li>
+        <li *ngIf="user"><a class="menu-text-dark hover-pointer" [routerLink]="['/profile']">Your Profile</a></li>
+        <li *ngIf="user"><a class="menu-text-dark hover-pointer">Sign out</a></li>
+      </ng-container>
+    </ul>
+    <ul
+      class="p-0 m-0 list-unstyled socials d-flex flex-grow-1 justify-content-around text-center bg-dark-subtle"
+    >
+      <li class="w-33 align-self-center"><fa-icon class="fb-icon fa-xl hover-pointer" [icon]="faFacebookF"></fa-icon></li>
+      <li class="w-33 align-self-center"><fa-icon class="x-icon fa-xl hover-pointer" [icon]="faXTwitter"></fa-icon></li>
+      <li class="w-33 align-self-center"><fa-icon class="yt-icon fa-xl hover-pointer" [icon]="faYoutube"></fa-icon></li>
+    </ul>
+  </div>
+</div>

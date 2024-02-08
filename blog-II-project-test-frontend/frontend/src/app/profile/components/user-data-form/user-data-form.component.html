@@ -1,0 +1,88 @@
+<div class="row p-0">
+  <form *ngIf="user" [formGroup]="userDataForm" class="col-12 col-md-5">
+    <fieldset>
+      <legend>User data</legend>
+      <div class="mb-3">
+        <label for="profileUsername" class="form-label">Username</label>
+        <input
+          type="text"
+          id="profileUsername"
+          class="form-control"
+          formControlName="username"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="profileDisplayName" class="form-label">Display name</label>
+        <input
+          type="text"
+          id="profileDisplayName"
+          class="form-control"
+          formControlName="displayName"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="profileEmailAddress" class="form-label"
+          >Email address</label
+        >
+        <input
+          type="text"
+          id="profileEmailAddress"
+          class="form-control"
+          formControlName="email"
+        />
+      </div>
+    </fieldset>
+    <div class="py-2">
+      <button
+        *ngIf="!showSubmitBtn"
+        type="click"
+        (click)="editUserData()"
+        class="btn btn-outline-secondary w-100 py-2"
+      >
+        Change user data
+      </button>
+      <button
+        *ngIf="showSubmitBtn"
+        type="click"
+        (click)="submitUserData()"
+        class="btn btn-outline-secondary w-50 py-2"
+      >
+        Submit
+      </button>
+      <button
+        *ngIf="showSubmitBtn"
+        type="click"
+        (click)="disableForm()"
+        class="btn btn-outline-secondary w-50 py-2"
+      >
+        Cancel
+      </button>
+    </div>
+  </form>
+
+  <div *ngIf="user" class="col-sm-12 col-md-5">
+    <fieldset>
+      <legend>Account information</legend>
+      <div class="mb-3">
+        <label for="profileRegDate" class="form-label">User type</label>
+        <input
+          type="text"
+          id="profileUserType"
+          class="form-control"
+          [value]="getUserRole()"
+          disabled
+        />
+      </div>
+      <div *ngIf="user" class="mb-3">
+        <label for="profileRegDate" class="form-label">Registration date</label>
+        <input
+          type="text"
+          id="profileRegDate"
+          class="form-control"
+          [value]="user.dateOfRegistration"
+          disabled
+        />
+      </div>
+    </fieldset>
+  </div>
+</div>

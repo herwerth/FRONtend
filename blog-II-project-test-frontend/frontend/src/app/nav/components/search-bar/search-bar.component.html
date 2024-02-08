@@ -1,0 +1,16 @@
+<div
+  [@toggleSearch]="isSearchOpen ? 'open' : 'closed'"
+  class="navbar-search-active d-flex justify-content-center align-items-center gap-1 gap-md-3"
+>
+  <fa-icon class="fa-lg hover-pointer" [icon]="faSearch"></fa-icon>
+  <input
+    #searchInputField
+    class="search-input w-75"
+    type="text"
+    placeholder="What are you searching for?"
+    id="searchBarInputField"
+  />
+  <div (click)="toggleSearch()" class="hover-pointer" id="closeSearchBarBtn">
+    <fa-icon class="fa-xl" [icon]="faClose"></fa-icon>
+  </div>
+</div>

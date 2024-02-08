@@ -1,0 +1,33 @@
+/* You can add global styles to this file, and also import other style files */
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: 'Share Tech Mono';
+  src: url('src/assets/fonts/Share_Tech_Mono/ShareTechMono-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  width: 100%;
+}
+
+.hover-pointer:hover {
+  cursor: pointer;
+}
+
+.menu-text {
+  text-decoration: none;
+  color: rgb(178, 175, 175);
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.bg-darkgrey {
+  background-color: rgb(44, 43, 47);
+}

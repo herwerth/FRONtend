@@ -1,0 +1,72 @@
+.vertical-menu li {
+  padding: 1rem 2rem;
+  margin: 0;
+  border-bottom: 1px solid grey;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+}
+
+.vertical-menu-dark li {
+  padding: 1rem 2rem;
+  margin: 0;
+  border-bottom: 1px solid rgb(46, 45, 42);
+  flex-grow: 1;
+}
+
+.socials {
+  background: grey;
+}
+
+.socials li {
+  border-right: 1px solid rgb(46, 45, 42);
+  padding: 1rem 0;
+}
+
+.socials li:last-child {
+  border-right: none;
+}
+
+.login {
+  background: grey;
+}
+
+.w-33 {
+  width: calc(100% / 3);
+}
+
+.h-30 {
+  height: calc(100% / 10 * 3);
+}
+
+.h-70 {
+  height: calc(100% / 10 * 7)
+}
+
+.menu-block li a:hover {
+  cursor: pointer;
+  color: rgb(224, 218, 218);
+}
+
+.fb-icon:hover {
+  color: blue;
+}
+
+.x-icon:hover {
+  color: white;
+}
+
+.yt-icon:hover {
+  color: red;
+}
+
+.menu-text-dark {
+  text-decoration: none;
+  color: rgb(61, 61, 61);
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.menu-text-dark:hover {
+  color: rgb(124, 122, 122);
+}

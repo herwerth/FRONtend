@@ -1,0 +1,30 @@
+.h-5rem {
+  height: 5rem;
+}
+
+.fontsize-2rem {
+  font-size: 2rem;
+}
+
+.header-text {
+  color: black;
+  text-decoration: none;
+}
+
+.font-share-tech-mono {
+  font-family: 'Share Tech Mono';
+}
+
+.profile-menu-pos {
+  width: max-content;
+  top: -18px;
+  right: 0;
+}
+
+.prof-menu {
+  z-index: 1000;
+  border: 2px solid grey;
+  border-radius: 5px;
+  padding: 4px;
+  background-color: white;
+}

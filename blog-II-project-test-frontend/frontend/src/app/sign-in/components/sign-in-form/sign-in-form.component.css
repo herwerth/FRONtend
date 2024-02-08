@@ -1,0 +1,59 @@
+.form-control {
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  border-bottom: 1px solid rgb(136, 136, 136);
+  padding: 0 0 0 0.25rem;
+}
+
+.form-control:focus {
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid rgb(122, 210, 218);
+  box-shadow: none;
+}
+
+label {
+  padding: 1.25rem 0;
+}
+
+span {
+  background-color: rgb(255, 255, 255);
+  height: 58px;
+  width: 3rem;
+}
+
+.vh-100 {
+  height: 100vh;
+}
+
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
+}
+
+.checkbox {
+  border: 2px solid;
+}
+
+.p-left-48 {
+  padding-left: 48px;
+}
+
+.btn {
+  border-radius: 0;
+}
+
+.m-width {
+  min-width: 288px;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+}

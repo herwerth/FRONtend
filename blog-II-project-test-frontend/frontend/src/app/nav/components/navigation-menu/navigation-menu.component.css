@@ -1,0 +1,28 @@
+.site-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  overflow: hidden;
+}
+
+.menu-mobile-tablet {
+  position: fixed;
+  width: 16rem;
+  transform: translate(-16rem);
+  height: 100vh;
+}
+
+.menu-toggle-close {
+  display: flex;
+  align-items: center;
+  height: 4rem;
+  padding: 0 1.2rem;
+}
+
+.site-wrap-mobile-nav-opened {
+  z-index: 1000;
+  position: fixed;
+  background: rgba(255, 255, 255, 0.8);
+  width: 100vw;
+  height: 100vh;
+}

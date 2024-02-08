@@ -1,0 +1,16 @@
+<div class="navbar-container bg-darkgrey text-light">
+  <app-search-bar></app-search-bar>
+  <div class="menu-toggle" (click)="toggleMenu()" id="toggleMobileMenuBtn">
+    <div *ngIf="!isMenuOpen" class="menu-toggle-open">
+      <i><fa-icon class="fa-xl" [icon]="faMenu"></fa-icon></i>
+    </div>
+  </div>
+  <div class="navbar-logo">Tech Blog</div>
+  <div
+    class="navbar-search hover-pointer"
+    (click)="toggleSearch()"
+    id="toggleSearchBarBtn"
+  >
+    <fa-icon class="fa-lg" [icon]="faSearch"></fa-icon>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<app-mobile-menu
+  *ngIf="!webView"
+  [@showNav]="isMobileNavVisible ? 'open' : 'closed'"
+  class="menu-mobile-tablet"
+></app-mobile-menu>
+
+<div
+  [@toggleNav]="isMobileNavVisible ? 'open' : 'closed'"
+  (click)="toggleIsMobileNavVisible()"
+  [ngClass]="isMobileNavVisible ? 'site-wrap-mobile-nav-opened' : ''"
+  id="closeMobileNavBtn"
+>
+  <div *ngIf="isMobileNavVisible" class="menu-toggle-close">
+    <fa-icon class="fa-xl" [icon]="faClose"></fa-icon>
+  </div>
+</div>
+
+<div
+  [@toggleNav]="isMobileNavVisible ? 'open' : 'closed'"
+  class="site-container"
+>
+  <app-top-banner *ngIf="webView"></app-top-banner>
+  <app-mobile-header *ngIf="!webView"></app-mobile-header>
+  <app-web-menu *ngIf="webView"></app-web-menu>
+
+  <!-- itt kell majd megjeleníteni az oldal tartalmát -->
+  <router-outlet></router-outlet>
+</div>

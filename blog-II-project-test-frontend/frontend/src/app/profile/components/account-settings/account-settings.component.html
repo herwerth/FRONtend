@@ -1,0 +1,148 @@
+<div *ngIf="changePwForm" class="row p-0">
+  <form [formGroup]="changePwForm" class="col-12 col-md-6 position-relative">
+    <fieldset>
+      <legend>Change password</legend>
+      <div class="mb-3">
+        <label for="profileUsername" class="form-label">Current password</label>
+        <input
+          type="password"
+          id="profileUsername"
+          class="form-control"
+          formControlName="oldPassword"
+        />
+      </div>
+      <small
+        *ngIf="getOldPasswordError() as oldPasswordError"
+        class="small text-danger"
+      >
+        {{ oldPasswordError }}
+      </small>
+      <div class="mb-2">
+        <label for="profileDisplayName" class="form-label">New password</label>
+        <input
+          type="password"
+          id="profileDisplayName"
+          class="form-control"
+          formControlName="newPassword"
+        />
+      </div>
+
+      <small
+        *ngIf="getNewPasswordError() as newPasswordError"
+        class="small text-danger"
+      >
+        {{ newPasswordError }}
+      </small>
+
+      <div
+        *ngIf="oldPassword?.valid && newPassword?.invalid"
+        class="text-start bg-white z-3 w-100"
+      >
+        <small
+          [ngClass]="[newPassword?.errors?.['spaceInPassword'] ? 'red' : 'green']"
+        >
+          <fa-icon
+            *ngIf="newPassword?.errors?.['spaceInPassword']; else check"
+            [icon]="faCircleXmark"
+          ></fa-icon>
+          <ng-template #check
+            ><fa-icon [icon]="faCircleCheck"></fa-icon
+          ></ng-template>
+          Password cannot contain spaces. <br />
+        </small>
+
+        <small
+          [ngClass]="[newPassword?.errors?.['noNumberInPw'] ? 'red' : 'green']"
+        >
+          <fa-icon
+            *ngIf="newPassword?.errors?.['noNumberInPw']; else check"
+            [icon]="faCircleXmark"
+          ></fa-icon>
+          <ng-template #check
+            ><fa-icon [icon]="faCircleCheck"></fa-icon
+          ></ng-template>
+          Must contain at least one number. <br />
+        </small>
+
+        <small
+          [ngClass]="[newPassword?.errors?.['minlength'] || !newPassword?.value ? 'red' : 'green']"
+        >
+          <fa-icon
+            *ngIf="newPassword?.errors?.['minlength'] || !newPassword?.value; else check"
+            [icon]="faCircleXmark"
+          ></fa-icon>
+          <ng-template #check
+            ><fa-icon [icon]="faCircleCheck"></fa-icon
+          ></ng-template>
+          Minimum length: 5 characters <br />
+        </small>
+
+        <small
+          [ngClass]="[newPassword?.errors?.['noLowercaseInPw'] ? 'red' : 'green']"
+        >
+          <fa-icon
+            *ngIf="newPassword?.errors?.['noLowercaseInPw']; else check"
+            [icon]="faCircleXmark"
+          ></fa-icon>
+          <ng-template #check
+            ><fa-icon [icon]="faCircleCheck"></fa-icon
+          ></ng-template>
+          Must contain at least one lowercase letter. <br />
+        </small>
+
+        <small
+          [ngClass]="[newPassword?.errors?.['noUppercaseInPw'] ? 'red' : 'green']"
+        >
+          <fa-icon
+            *ngIf="newPassword?.errors?.['noUppercaseInPw'] ; else check"
+            [icon]="faCircleXmark"
+          ></fa-icon>
+          <ng-template #check
+            ><fa-icon [icon]="faCircleCheck"></fa-icon
+          ></ng-template>
+          Must contain at least one uppercase letter. <br />
+        </small>
+      </div>
+
+      <div class="my-3">
+        <label for="newPasswordAgain" class="form-label"
+          >Confirm new password</label
+        >
+        <input
+          type="password"
+          id="newPasswordAgain"
+          class="form-control"
+          formControlName="newPasswordAgain"
+        />
+      </div>
+
+      <small
+        *ngIf="newPasswordAgain?.errors?.['newPasswordNotConfirmed'] && newPasswordAgain?.value"
+        class="small text-danger"
+      >
+        Password does not match.
+      </small>
+    </fieldset>
+
+    <small
+      *ngIf="getNewPasswordAgainError() as newPasswordAgainError"
+      class="small text-danger"
+    >
+      {{ newPasswordAgainError }}
+    </small>
+    <small *ngIf="backendReply" class="small text-success">
+      {{ backendReply }}
+    </small>
+
+    <div class="py-2">
+      <button
+        type="click"
+        class="btn btn-outline-primary w-100"
+        [disabled]="changePwForm.invalid"
+        (click)="submitPwChange()"
+      >
+        Submit
+      </button>
+    </div>
+  </form>
+</div>

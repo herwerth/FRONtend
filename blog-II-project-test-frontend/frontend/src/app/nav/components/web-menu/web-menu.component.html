@@ -1,0 +1,42 @@
+<nav
+  class="w-100 text-light bg-darkgrey position-relative height-5rem d-flex align-items-center"
+>
+  <app-search-bar></app-search-bar>
+  <div class="container-xl">
+    <div class="row justify-content-between">
+      <div class="col-9 menu-block">
+        <ul class="d-flex list-unstyled height-5rem">
+          <li><a class="menu-text">Entertainment</a></li>
+          <li><a class="menu-text">Reviews</a></li>
+          <li><a class="menu-text">Gaming</a></li>
+          <li><a class="menu-text">Short</a></li>
+          <li><a class="menu-text">Another Topic</a></li>
+          <li><a class="menu-text">Another Topic</a></li>
+          <li><a class="menu-text">Topic</a></li>
+        </ul>
+      </div>
+      <div class="col-2">
+        <ul
+          class="d-flex justify-content-between align-items-center list-unstyled height-5rem"
+        >
+          <li class="w-33 align-self-center">
+            <fa-icon class="icon fa-xl" [icon]="faFacebookF"></fa-icon>
+          </li>
+          <li class="w-33 align-self-center">
+            <fa-icon class="icon fa-xl" [icon]="faXTwitter"></fa-icon>
+          </li>
+          <li class="w-33 align-self-center">
+            <fa-icon class="icon fa-xl" [icon]="faYoutube"></fa-icon>
+          </li>
+          <li
+            class="w-33 align-self-center hover-pointer fa-xl icon"
+            (click)="toggleSearch()"
+            id="openSearchBarBtn"
+          >
+            <fa-icon [icon]="faSearch"></fa-icon>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>

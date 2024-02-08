@@ -1,0 +1,44 @@
+server:
+  port: 8080
+  servlet:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+
+spring:
+  datasource:
+    url: jdbc:mysql://progmasters-2023-blog-2.cfjrzzmkuhk5.eu-central-1.rds.amazonaws.com:3306/blog_2_prod?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8
+    username: blog_2_admin
+    password: passwordforblog2admin2023
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQL8Dialect
+    generate-ddl: true
+    open-in-view: false
+
+logging:
+  level:
+    hu.progmasters: info
+    org.springframework.web: info
+    org.hibernate: error
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+
+openai:
+  image-generator:
+    url: https://api.openai.com
+    api-key: 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
+
+
+cloudinary:
+  cloudinary.cloud_name: dso96gsd0
+  cloudinary.api_key: 719852877574546
+  cloudinary.api_secret: zQ44KFXJU6Ohw8u9qbRcUBowBc4
